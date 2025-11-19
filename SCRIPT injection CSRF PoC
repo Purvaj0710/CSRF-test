@@ -1,0 +1,6 @@
+<script>
+fetch("https://qapr.tcsion.com/iDMNxtGen/StartAssessmentController?orgId=726&driveId=EBAPP...&action=StartMarking", {
+  method: "POST",
+  credentials: "include"
+});
+</script>
